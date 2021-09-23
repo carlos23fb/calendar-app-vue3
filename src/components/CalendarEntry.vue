@@ -8,6 +8,9 @@
         <a class="button is-primary is-small is-outlined"
         @click="submitEvent(inputEntry)">Submit</a>
     </div>
+    <p style="color: red; font-size: 13px" v-if="error">
+        You must type something first!!
+    </p>
 </div>
 </template>
 
@@ -17,7 +20,8 @@ export default {
     name: "CalendarEntry",
     data(){
         return {
-            inputEntry: ""
+            inputEntry: "",
+            error: false,
         }
     },
     computed: {
@@ -27,8 +31,10 @@ export default {
     },
     methods: {
         submitEvent(eventDetails){
+            if (eventDetails === '') return this.error = true;
             store.submitEvent(eventDetails);
             this.inputEntry = ""
+            this.error = false
         }
     },
 }
