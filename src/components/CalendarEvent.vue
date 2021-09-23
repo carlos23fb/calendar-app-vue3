@@ -1,6 +1,6 @@
 <template>
 <div class="day-event" :style="getEvenBackgroundColor">
-    <div>
+    <div v-if="!event.edit">
         <span class="has-text-centered details">{{ event.details }}</span>
         <div class="has-text-centered icons">
             <i class="fa fa-pencil-square edit-icon"></i>
